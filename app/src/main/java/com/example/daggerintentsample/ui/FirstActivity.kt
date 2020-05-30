@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.daggerintentsample.R
 import com.example.daggerintentsample.databinding.ActivityFirstBinding
+import com.example.daggerintentsample.di.ViewModelFactory
 import com.example.daggerintentsample.viewmodel.FirstViewModel
 import com.example.daggerintentsample.viewmodel.FirstViewModelFactory
 import dagger.android.AndroidInjection

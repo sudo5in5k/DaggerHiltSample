@@ -10,10 +10,12 @@ import javax.inject.Singleton
 abstract class ActivityModule {
 
     @Singleton
+    @ActivityScope
     @ContributesAndroidInjector(modules = [FirstActivityModule::class])
     abstract fun contributeFirstActivity(): FirstActivity
 
     @Singleton
+    @ActivityScope
     @ContributesAndroidInjector(modules = [SecondActivityModule::class])
     abstract fun contributeSecondActivity(): SecondActivity
 }

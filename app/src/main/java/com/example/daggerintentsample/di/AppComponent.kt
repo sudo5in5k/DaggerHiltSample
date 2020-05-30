@@ -1,6 +1,5 @@
 package com.example.daggerintentsample.di
 
-import android.app.Application
 import com.example.daggerintentsample.App
 import dagger.BindsInstance
 import dagger.Component
@@ -11,7 +10,8 @@ import dagger.android.AndroidInjector
     modules = [
         AndroidInjectionModule::class,
         MainModule::class,
-        ActivityModule::class
+        ActivityModule::class,
+        ViewModelModule::class
     ]
 )
 interface AppComponent : AndroidInjector<App> {

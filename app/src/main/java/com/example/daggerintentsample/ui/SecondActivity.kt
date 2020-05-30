@@ -7,20 +7,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.daggerintentsample.R
-import com.example.daggerintentsample.data.SecondRepository
 import com.example.daggerintentsample.data.entity.SampleData
 import com.example.daggerintentsample.databinding.ActivitySecondBinding
+import com.example.daggerintentsample.di.ViewModelFactory
 import com.example.daggerintentsample.viewmodel.SecondViewModel
-import com.example.daggerintentsample.viewmodel.SecondViewModelFactory
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
 class SecondActivity : AppCompatActivity() {
 
-//    private val repository = SecondRepository(this)
-//    private val data: SampleData? by lazy { intent.getSerializableExtra(KEY) as? SampleData }
     @Inject
-    lateinit var secondViewModelFactory: SecondViewModelFactory
+    lateinit var secondViewModelFactory: ViewModelFactory
     private lateinit var secondViewModel: SecondViewModel
     private lateinit var binding: ActivitySecondBinding
 
