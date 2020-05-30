@@ -9,6 +9,10 @@ import javax.inject.Inject
 class FirstViewModelFactory @Inject constructor(private val id: String?, private val repository: FirstRepository) :
     ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return FirstViewModel(id, repository) as T
+        if (modelClass.isAssignableFrom(FirstViewModel::class.java)) {
+            return FirstViewModel(id, repository) as T
+        } else {
+            throw IllegalArgumentException("FirstViewModel not found.")
+        }
     }
 }
