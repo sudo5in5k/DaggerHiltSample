@@ -12,19 +12,23 @@ import com.example.daggerintentsample.data.entity.SampleData
 import com.example.daggerintentsample.databinding.ActivitySecondBinding
 import com.example.daggerintentsample.viewmodel.SecondViewModel
 import com.example.daggerintentsample.viewmodel.SecondViewModelFactory
+import dagger.android.AndroidInjection
+import javax.inject.Inject
 
 class SecondActivity : AppCompatActivity() {
 
-    private val repository = SecondRepository(this)
-    private val data: SampleData? by lazy { intent.getSerializableExtra(KEY) as? SampleData }
-    private lateinit var secondViewModelFactory: SecondViewModelFactory
+//    private val repository = SecondRepository(this)
+//    private val data: SampleData? by lazy { intent.getSerializableExtra(KEY) as? SampleData }
+    @Inject
+    lateinit var secondViewModelFactory: SecondViewModelFactory
     private lateinit var secondViewModel: SecondViewModel
     private lateinit var binding: ActivitySecondBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_second)
-        secondViewModelFactory = SecondViewModelFactory(data, repository)
+        //secondViewModelFactory = SecondViewModelFactory(data, repository)
         secondViewModel =
             ViewModelProvider(this, secondViewModelFactory).get(SecondViewModel::class.java)
 
@@ -34,7 +38,7 @@ class SecondActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val KEY = "key"
+        const val KEY = "key"
 
         fun createIntent(context: Context, data: SampleData?) =
             Intent(context, SecondActivity::class.java).apply {

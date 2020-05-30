@@ -6,18 +6,17 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
-import javax.inject.Singleton
 
-@Singleton
 @Component(
     modules = [
         AndroidInjectionModule::class,
+        MainModule::class,
         ActivityModule::class
     ]
 )
 interface AppComponent : AndroidInjector<App> {
     @Component.Factory
     interface Factory {
-        fun create(@BindsInstance app: Application): AndroidInjector<App>
+        fun create(@BindsInstance app: App): AndroidInjector<App>
     }
 }

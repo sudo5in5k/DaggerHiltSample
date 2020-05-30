@@ -1,12 +1,14 @@
 package com.example.daggerintentsample.di
 
 import android.app.Activity
+import android.content.Context
 import androidx.annotation.Nullable
 import com.example.daggerintentsample.data.FirstRepository
 import com.example.daggerintentsample.ui.FirstActivity
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 abstract class FirstActivityModule {
@@ -20,10 +22,12 @@ abstract class FirstActivityModule {
         @JvmStatic
         @Provides
         @Nullable
-        fun provideId(): String? = null ?: "2"
+        @Singleton
+        fun provideId(activity: FirstActivity): String? = null ?: "2"
 
         @JvmStatic
         @Provides
-        fun provideRepository(activity: FirstActivity) = FirstRepository(activity)
+        @Singleton
+        fun provideRepository(context: Context) = FirstRepository(context)
     }
 }
