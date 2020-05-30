@@ -1,6 +1,9 @@
-package com.example.daggerintentsample.di
+package com.example.daggerintentsample.di.component
 
 import com.example.daggerintentsample.App
+import com.example.daggerintentsample.di.module.ViewModelModule
+import com.example.daggerintentsample.di.module.ActivityModule
+import com.example.daggerintentsample.di.module.MainModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule

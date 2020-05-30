@@ -8,16 +8,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.daggerintentsample.R
 import com.example.daggerintentsample.databinding.ActivityFirstBinding
-import com.example.daggerintentsample.di.ViewModelFactory
 import com.example.daggerintentsample.viewmodel.FirstViewModel
-import com.example.daggerintentsample.viewmodel.FirstViewModelFactory
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
 class FirstActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var factory: FirstViewModelFactory
+    lateinit var factory: ViewModelProvider.Factory
     private lateinit var firstViewModel: FirstViewModel
     private lateinit var binding: ActivityFirstBinding
 

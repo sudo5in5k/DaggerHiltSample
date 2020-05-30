@@ -1,4 +1,4 @@
-package com.example.daggerintentsample.di
+package com.example.daggerintentsample.di.module
 
 import android.content.Context
 import com.example.daggerintentsample.App

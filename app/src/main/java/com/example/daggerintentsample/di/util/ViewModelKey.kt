@@ -1,4 +1,4 @@
-package com.example.daggerintentsample.di
+package com.example.daggerintentsample.di.util
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

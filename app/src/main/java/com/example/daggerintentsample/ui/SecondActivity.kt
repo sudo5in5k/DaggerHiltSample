@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.daggerintentsample.R
 import com.example.daggerintentsample.data.entity.SampleData
 import com.example.daggerintentsample.databinding.ActivitySecondBinding
-import com.example.daggerintentsample.di.ViewModelFactory
 import com.example.daggerintentsample.viewmodel.SecondViewModel
 import dagger.android.AndroidInjection
 import javax.inject.Inject
@@ -17,7 +16,7 @@ import javax.inject.Inject
 class SecondActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var secondViewModelFactory: ViewModelFactory
+    lateinit var secondViewModelFactory: ViewModelProvider.Factory
     private lateinit var secondViewModel: SecondViewModel
     private lateinit var binding: ActivitySecondBinding
 

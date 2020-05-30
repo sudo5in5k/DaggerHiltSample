@@ -1,4 +1,4 @@
-package com.example.daggerintentsample.di
+package com.example.daggerintentsample.di.scope
 
 import javax.inject.Scope
 

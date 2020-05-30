@@ -1,10 +1,12 @@
-package com.example.daggerintentsample.di
+package com.example.daggerintentsample.di.module
 
 import android.content.Context
 import androidx.annotation.Nullable
 import androidx.lifecycle.ViewModel
 import com.example.daggerintentsample.data.SecondRepository
 import com.example.daggerintentsample.data.entity.SampleData
+import com.example.daggerintentsample.di.util.ViewModelKey
+import com.example.daggerintentsample.di.scope.ActivityScope
 import com.example.daggerintentsample.ui.SecondActivity
 import com.example.daggerintentsample.viewmodel.SecondViewModel
 import dagger.Binds
@@ -16,10 +18,12 @@ import javax.inject.Singleton
 @Module
 abstract class SecondActivityModule {
 
-//    @Binds
-//    @IntoMap
-//    @ViewModelKey(SecondViewModel::class)
-//    abstract fun bindSecondViewModel(viewModel: SecondViewModel): ViewModel
+    @Binds
+    @IntoMap
+    @ViewModelKey(SecondViewModel::class)
+    @ActivityScope
+    abstract fun bindSecondViewModel(viewModel: SecondViewModel): ViewModel
+
 
     @Module
     companion object {

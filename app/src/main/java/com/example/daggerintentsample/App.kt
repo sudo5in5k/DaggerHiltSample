@@ -1,7 +1,7 @@
 package com.example.daggerintentsample
 
 import android.app.Application
-import com.example.daggerintentsample.di.DaggerAppComponent
+import com.example.daggerintentsample.di.component.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
