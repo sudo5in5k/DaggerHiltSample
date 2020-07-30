@@ -1,20 +1,13 @@
 package com.example.daggerintentsample
 
 import android.app.Application
-import com.example.daggerintentsample.di.component.DaggerAppComponent
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
-import javax.inject.Inject
+import dagger.hilt.android.HiltAndroidApp
 
-class App : Application(), HasAndroidInjector {
+@HiltAndroidApp
+class App : Application() {
 
-    @Inject
-    lateinit var androidInjector: DispatchingAndroidInjector<Any>
-
-    override fun androidInjector(): AndroidInjector<Any> {
-        DaggerAppComponent.factory().create(this).inject(this)
-        return androidInjector
+    override fun onCreate() {
+        super.onCreate()
     }
 
 }

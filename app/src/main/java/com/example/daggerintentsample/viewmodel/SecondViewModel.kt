@@ -1,12 +1,19 @@
 package com.example.daggerintentsample.viewmodel
 
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.example.daggerintentsample.data.SecondRepository
 import com.example.daggerintentsample.data.entity.SampleData
 import javax.inject.Inject
 
-class SecondViewModel @Inject constructor(data: SampleData?, repository: SecondRepository) : ViewModel() {
+class SecondViewModel @ViewModelInject constructor(
+    data: SampleData?,
+    repository: SecondRepository,
+    @Assisted savedStateHandle: SavedStateHandle
+) : ViewModel() {
 
     val text = MutableLiveData<String>()
 
