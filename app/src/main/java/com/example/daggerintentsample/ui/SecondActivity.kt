@@ -3,31 +3,26 @@ package com.example.daggerintentsample.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import com.example.daggerintentsample.R
 import com.example.daggerintentsample.data.entity.SampleData
 import com.example.daggerintentsample.databinding.ActivitySecondBinding
 import com.example.daggerintentsample.viewmodel.SecondViewModel
-import dagger.android.AndroidInjection
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class SecondActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var secondViewModelFactory: ViewModelProvider.Factory
-    private lateinit var secondViewModel: SecondViewModel
+    private val secondViewModel by viewModels<SecondViewModel>()
     private lateinit var binding: ActivitySecondBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_second)
-        //secondViewModelFactory = SecondViewModelFactory(data, repository)
-        secondViewModel =
-            ViewModelProvider(this, secondViewModelFactory).get(SecondViewModel::class.java)
-
         binding.apply {
             viewModel = secondViewModel
         }

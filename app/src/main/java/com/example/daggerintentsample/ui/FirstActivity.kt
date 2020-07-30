@@ -2,34 +2,41 @@ package com.example.daggerintentsample.ui
 
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.example.daggerintentsample.R
+import com.example.daggerintentsample.data.FirstRepository
 import com.example.daggerintentsample.databinding.ActivityFirstBinding
 import com.example.daggerintentsample.viewmodel.FirstViewModel
-import dagger.android.AndroidInjection
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class FirstActivity : AppCompatActivity() {
 
+//    @Inject
+//    lateinit var repository: FirstRepository
+
     @Inject
-    lateinit var factory: ViewModelProvider.Factory
-    private lateinit var firstViewModel: FirstViewModel
+    @JvmField
+    var id: String? = null
+
+    @Inject
+    lateinit var repository: FirstRepository
+
+    private val firstViewModel: FirstViewModel by viewModels()
     private lateinit var binding: ActivityFirstBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_first)
-
-        firstViewModel = ViewModelProvider(this, factory).get(FirstViewModel::class.java)
-
         binding.apply {
             viewModel = firstViewModel
         }
 
+        Log.d("debug", id ?: "null")
         firstViewModel.dataString.observe(this, Observer {
             Log.d("debug", it)
         })
